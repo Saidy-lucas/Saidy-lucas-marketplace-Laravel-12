@@ -133,11 +133,15 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+             @if(Auth::user()->image != null)
+            <img alt="{{ Auth::user()->name }}" src="{{ asset(Auth::user()->image) }}" class="img-fluid" style="width: 35px; height:35px; object-fit:cover; border-radius:50%;">
+             @else()
             <img alt="image" src="{{ asset('backend/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+            @endif()
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Activo a 5 min</div>
-              <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
+              <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Perfil
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
